@@ -1,11 +1,19 @@
 import React from 'react';
-import {Container} from "./components/container";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-function App() {
-  return (
-    <Container>
-        <h1>Hi</h1>
-    </Container>
+const App = () => {
+    return (
+    <Router>
+        <Navbar />
+        <Routes>
+            <Route path="/" />
+            <Route path="/Contacts" />
+            <Route path="/About" />
+            <Route path="/Sign up" />
+        </Routes>
+    </Router>
   );
 }
 
