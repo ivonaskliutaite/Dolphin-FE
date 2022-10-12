@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {
     NavbarContainer,
-    NavbarExtendedContainer,
     NavbarInnerContainer,
     NavbarLeftContainer,
     NavbarRightContainer,
@@ -12,29 +11,24 @@ import {
 } from "../styles/NavbarStyle";
 const LogoImg =  require("../assets/logo.png")
 
-function Navbar() {
-    const [extendNavbar, setExtendNavbar] = useState(false);
-
+const Navbar = () => {
     return (
-        <NavbarContainer extendNavbar={extendNavbar}>
+        <NavbarContainer>
             <NavbarInnerContainer>
                 <NavbarLeftContainer>
                     <NavbarLinkContainer>
-                        <NavbarLink to="/">Home</NavbarLink>
+                        <NavbarLink to="/"> Home </NavbarLink>
                         <NavbarLink to="/contacts">Contacts</NavbarLink>
                         <NavbarLink to="/about">About</NavbarLink>
                         <NavbarLink to="/sign-up">Sign Up!</NavbarLink>
-                        <OpenLinksButton onClick={() => {setExtendNavbar((currentValue) => !currentValue);
-                        }}
-                        >
-                            {extendNavbar ? <>&#10005;</> : <> &#8801;</>} </OpenLinksButton>
+                        <OpenLinksButton >&#10005;
+                        </OpenLinksButton>
                     </NavbarLinkContainer>
                 </NavbarLeftContainer>
                 <NavbarRightContainer>
                     <Logo src={LogoImg}></Logo>
                 </NavbarRightContainer>
             </NavbarInnerContainer>
-            <NavbarExtendedContainer></NavbarExtendedContainer>
         </NavbarContainer>
     )
 };
