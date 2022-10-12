@@ -7,6 +7,9 @@ import {
 import {Button} from "../components/Button";
 
 const Homepage = () => {
+    fetch("https://dolphin-articles-be.herokuapp.com/articles/")
+        .then(r => console.log(r));
+
     return (
         <CardContainer>
             <CardTitle>
