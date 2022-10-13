@@ -21,8 +21,8 @@ const Navbar = () => {
                         <NavbarLink to="/contacts">Contacts</NavbarLink>
                         <NavbarLink to="/about">About</NavbarLink>
                         <NavbarLink to="/sign-up">Sign Up!</NavbarLink>
-                        <OpenLinksButton >&#10005;
-                        </OpenLinksButton>
+                        {/*<OpenLinksButton >&#10005;*/}
+                        {/*</OpenLinksButton>*/}
                     </NavbarLinkContainer>
                 </NavbarLeftContainer>
                 <NavbarRightContainer>
