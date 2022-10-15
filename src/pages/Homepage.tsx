@@ -3,11 +3,8 @@ import React, {useEffect, useState} from "react";
 import {
     CardContainer,
     CardTitle,
-    CardBody
 } from "../components/Card";
-import {Button} from "../components/Button";
-import {ARTICLESRES} from "./database";
-import styled from "styled-components";
+import ArticleModal from "../components/ArticleModal";
 
 interface ArticleSummary {
     id: number;
@@ -20,6 +17,9 @@ const Homepage = () => {
     const [search, setSearch] = useState<string>('')
     const [refreshDisable, setRefreshDisable] = useState<boolean>()
     const [cards, setCards] = useState<ArticleSummary[]>([])
+    const [articleIdToShow, setArticleIdToShow] = useState<number | null>()
+
+    console.log(articleIdToShow)
     useEffect(() => {
         fetch("http://localhost:3000/articles/", {
             mode: "no-cors",
@@ -27,6 +27,7 @@ const Homepage = () => {
             .then(r => setCards(r))
     }, []);
     return <div>
+        <ArticleModal visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} />
         <div>
             <button onClick={() => {
                 setRefreshDisable(true)
@@ -40,20 +41,25 @@ const Homepage = () => {
             }} disabled={refreshDisable}>
                 REFRESH
             </button>
-            <input type="text" value={search} onChange={(e) => {setSearch(e.target.value)}} />
+            <input type="text" value={search} onChange={(e) => {
+                setSearch(e.target.value)
+            }}/>
         </div>
-        {cards.filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search)).map(r => (<CardContainer href={r.url}>
-            <CardTitle>
-                <h3>{r.title}</h3>
-            </CardTitle>
-            {r.category && <div style={{
-                display: "inline-block",
-                background: "gray",
-                color: "white",
-                padding: "8px",
-                borderRadius: "8px"
-            }}>{r.category}</div>}
-        </CardContainer>))}
+        {cards.filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search)).map(r =>
+            (<CardContainer onClick={() => {
+                setArticleIdToShow(r.id)
+            }}>
+                <CardTitle>
+                    <h3>{r.title}</h3>
+                </CardTitle>
+                {r.category && <div style={{
+                    display: "inline-block",
+                    background: "gray",
+                    color: "white",
+                    padding: "8px",
+                    borderRadius: "8px"
+                }}>{r.category}</div>}
+            </CardContainer>))}
     </div>
 };
 

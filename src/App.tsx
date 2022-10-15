@@ -1,5 +1,4 @@
 import React from 'react';
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/globalStyles";
 import Navbar from "./components/Navbar";
@@ -16,8 +15,8 @@ const App = () => {
             <Route path="/contacts" />
             <Route path="/about" />
             <Route path="/sign-up" />
-            </Routes>
-        </Router>
+        </Routes>
+    </Router>
   );
 }
 
