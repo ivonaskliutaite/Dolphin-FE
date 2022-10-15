@@ -27,7 +27,8 @@ const Homepage = () => {
             .then(r => setCards(r))
     }, []);
     return <div>
-        <ArticleModal visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} />
+        {/*ask about key*/}
+        <ArticleModal key={articleIdToShow} visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} articleIdToShow={articleIdToShow} />
         <div>
             <button onClick={() => {
                 setRefreshDisable(true)
