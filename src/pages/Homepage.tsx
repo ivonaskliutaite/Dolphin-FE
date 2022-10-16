@@ -1,12 +1,12 @@
 // @ts-ignore
 import React, {useEffect, useState} from "react";
-import {
+import Card, {
     CardContainer,
     CardTitle,
 } from "../components/Card";
 import ArticleModal from "../components/ArticleModal";
 
-interface ArticleSummary {
+export interface ArticleSummary {
     id: number;
     url: string;
     title: string;
@@ -46,21 +46,12 @@ const Homepage = () => {
                 setSearch(e.target.value)
             }}/>
         </div>
-        {cards.filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search)).map(r =>
-            (<CardContainer onClick={() => {
-                setArticleIdToShow(r.id)
-            }}>
-                <CardTitle>
-                    <h3>{r.title}</h3>
-                </CardTitle>
-                {r.category && <div style={{
-                    display: "inline-block",
-                    background: "gray",
-                    color: "white",
-                    padding: "8px",
-                    borderRadius: "8px"
-                }}>{r.category}</div>}
-            </CardContainer>))}
+        {cards
+            .filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search))
+            .map(r => <Card data={r} onclick={() => {
+                 setArticleIdToShow(r.id)
+                }}></Card>
+            )}
     </div>
 };
 
