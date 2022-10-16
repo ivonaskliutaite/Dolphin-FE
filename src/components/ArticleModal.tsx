@@ -19,7 +19,7 @@ const ArticleModal = (props:ArticleModalProps) => {
     const [article, setArticle] = useState<Article>()
     useEffect(() => {
         if (props.articleIdToShow){
-            fetch(`http://localhost:3000/articles/${props.articleIdToShow}`, {
+            fetch(`http://localhost:3005/articles/${props.articleIdToShow}`, {
                 mode: "no-cors",
             }).then(r => r.json())
                 .then(r => setArticle(r))

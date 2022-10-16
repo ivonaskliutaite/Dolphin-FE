@@ -21,7 +21,7 @@ const Homepage = () => {
 
     console.log(articleIdToShow)
     useEffect(() => {
-        fetch("http://localhost:3000/articles/", {
+        fetch("http://localhost:3005/articles/", {
             mode: "no-cors",
         }).then(r => r.json())
             .then(r => setCards(r))
@@ -32,7 +32,7 @@ const Homepage = () => {
         <div>
             <button onClick={() => {
                 setRefreshDisable(true)
-                fetch("http://localhost:3000/articles/", {
+                fetch("http://localhost:3005/articles/", {
                     mode: "no-cors",
                 }).then(r => r.json())
                     .then(r => {
