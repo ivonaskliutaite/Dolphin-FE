@@ -6,10 +6,8 @@ export const Button = styled.button`
   align-items: center;
   background-color: initial;
   margin-left: 15%;
-  background-image: linear-gradient(to left, #051937, #002033, #002326, #082418, #1e2311);
   border-radius: 8px;
   border-width: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
   box-sizing: border-box;
   cursor: pointer ;
   color: #fff;
@@ -19,8 +17,7 @@ export const Button = styled.button`
   padding: 10px 32px;
   line-height: 1;
   white-space: nowrap;
-  &:hover{  
-    box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
+  &:hover{
   opacity: .85}
 
   @media (max-width: 420px) {
@@ -29,3 +26,22 @@ export const Button = styled.button`
     }
   }
 `;
+
+export const RefreshButton = styled.button`
+  margin: 4vh 4vw;
+  cursor: pointer;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 2vh;
+`;
+
+export const HamburgerBtn = styled.i`
+  font-size: 2.1rem;
+  top: 0;
+  left: 0;
+  margin: 2rem;
+  color: black;
+  z-index: 10;
+@media(min-width: 600px){
+  display: none;
+}`

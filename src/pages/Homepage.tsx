@@ -1,10 +1,8 @@
 // @ts-ignore
 import React, {useEffect, useState} from "react";
-import Card, {
-    CardContainer,
-    CardTitle,
-} from "../components/Card";
 import ArticleModal from "../components/ArticleModal";
+import {RefreshButton} from "../components/Buttons";
+import HomeCard from "../components/Card";
 
 export interface ArticleSummary {
     id: number;
@@ -19,7 +17,6 @@ const Homepage = () => {
     const [cards, setCards] = useState<ArticleSummary[]>([])
     const [articleIdToShow, setArticleIdToShow] = useState<number | null>()
 
-    console.log(articleIdToShow)
     useEffect(() => {
         fetch("http://localhost:3005/articles/", {
             mode: "no-cors",
@@ -27,10 +24,9 @@ const Homepage = () => {
             .then(r => setCards(r))
     }, []);
     return <div>
-        {/*ask about key*/}
         <ArticleModal key={articleIdToShow} visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} articleIdToShow={articleIdToShow} />
         <div>
-            <button onClick={() => {
+            <RefreshButton onClick={() => {
                 setRefreshDisable(true)
                 fetch("http://localhost:3005/articles/", {
                     mode: "no-cors",
@@ -40,17 +36,17 @@ const Homepage = () => {
                     })
                 setRefreshDisable(false)
             }} disabled={refreshDisable}>
-                REFRESH
-            </button>
-            <input type="text" value={search} onChange={(e) => {
+                Atnaujinti <i className="fa fa-refresh" aria-hidden="true"></i>
+            </RefreshButton>
+            <input type="text" placeholder="Įveskite ieškomą frazę..." value={search} onChange={(e) => {
                 setSearch(e.target.value)
             }}/>
         </div>
         {cards
             .filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search))
-            .map(r => <Card data={r} onclick={() => {
+            .map(r => <HomeCard data={r} onclick={() => {
                  setArticleIdToShow(r.id)
-                }}></Card>
+                }}></HomeCard>
             )}
     </div>
 };

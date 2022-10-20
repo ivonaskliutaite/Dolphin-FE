@@ -3,22 +3,23 @@ import {ArticleSummary} from "../pages/Homepage";
 
 import styled from "styled-components";
 
-export const CardContainer = styled.a`
-  width: 300px;
-  padding: 2vw;
+ const CardContainer = styled.a`
+  width: 250px;
+  padding: 3vw;
+   margin: 40px 2vw 40px 7vw;
   overflow: hidden;
   box-shadow: 0 0 15px -5px;
-  margin: 50px 11vw;
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
   color: black;
+   vertical-align: top;
 `;
 
-export const CardBody = styled.div`
-  overflow: hidden;
-  padding: 1.5vw;
-`;
+//  const CardBody = styled.div`
+//   overflow: hidden;
+//   padding: 1.5vw;
+// `;
 
 export const CardTitle = styled.div`
   display: flex;

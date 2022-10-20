@@ -15,10 +15,10 @@ interface Article {
     category: string | null;
 }
 
-const ArticleModal = (props:ArticleModalProps) => {
+const ArticleModal = (props: ArticleModalProps) => {
     const [article, setArticle] = useState<Article>()
     useEffect(() => {
-        if (props.articleIdToShow){
+        if (props.articleIdToShow) {
             fetch(`http://localhost:3005/articles/${props.articleIdToShow}`, {
                 mode: "no-cors",
             }).then(r => r.json())
@@ -29,16 +29,24 @@ const ArticleModal = (props:ArticleModalProps) => {
         <div>
             <Modal
                 isOpen={props.visible}
-                // onAfterOpen={afterOpenModal}
-                // onRequestClose={closeModal}
-                style={{  content: {
-                        width: '80%'
-                    },}}
                 contentLabel="Example Modal"
             >
-                <button onClick={ () => {
+                <button onClick={() => {
                     props.onClose()
-                } }>close</button>
+                }}>Close
+                </button>
+                <button onClick={() => {
+                    const requestOptions = {
+                        method: 'PUT',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(article)
+                    };
+                    if (article?.id) {
+                        fetch(`http://localhost:3005/articles/${article.id}`, requestOptions)
+                            .then(response => response.json())
+                    }
+                }}>Save
+                </button>
                 <div>
                     <h1>{article?.title}</h1>
                     <h3>{article?.category}</h3>
