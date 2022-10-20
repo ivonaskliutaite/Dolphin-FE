@@ -37,12 +37,11 @@ const Contacts = () => {
                             </Grid>
                             <Grid xs={12} sm={6} item>
                                 <TextField label="Jūsų pavarde:" placeholder="jūsų pavarde..." variant="outlined"
-                                           fullWidth
-                                           required/>
+                                           fullWidth/>
                             </Grid>
                             <Grid xs={12} item>
                                 <TextField error type="email" label="Jūsų el. paštas:" placeholder="jūsų el. paštas..."
-                                           variant="outlined" fullWidth required/>
+                                           variant="outlined" fullWidth/>
                             </Grid>
                             <Grid xs={12} item>
                                 <TextField error={formValues.msg.length === 0 ? true : false} label="Jūsų žinutė:" multiline rows={4}
