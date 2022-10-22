@@ -96,7 +96,7 @@ const Navbar = () => {
                     <p>Prisijungti/Registruotis</p>
                 </Link>
                 <Link to="/logout" onClick={() => setNavbarOpen(false)}>
-                    <p>Atsijungti</p>
+                    <p><i className="fa fa-sign-out" aria-hidden="true"></i></p>
                 </Link>
             </DesktopMenuNavbar>
         </Nav>
