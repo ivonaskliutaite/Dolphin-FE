@@ -1,15 +1,11 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import {
-    Card,
     CardContent,
     Typography,
     Grid,
     TextField,
     Button,
-    FormControl,
-    InputLabel,
-    OutlinedInput, FormHelperText
 } from "@mui/material";
 
 const CardStyled = styled.div`
@@ -31,7 +27,7 @@ const Contacts = () => {
                     <form>
                         <Grid container spacing={3}>
                             <Grid xs={12} sm={6} item>
-                                <TextField label="Jūsų vardas:" placeholder="jūsų vardas..." variant="outlined"
+                                <TextField error={formValues.msg.length === 0 ? true : false} label="Jūsų vardas:" placeholder="jūsų vardas..." variant="outlined"
                                            fullWidth
                                            required/>
                             </Grid>
@@ -40,19 +36,21 @@ const Contacts = () => {
                                            fullWidth/>
                             </Grid>
                             <Grid xs={12} item>
-                                <TextField error type="email" label="Jūsų el. paštas:" placeholder="jūsų el. paštas..."
-                                           variant="outlined" fullWidth/>
+                                <TextField error={formValues.msg.length === 0 ? true : false} type="email" label="Jūsų el. paštas:" placeholder="jūsų el. paštas..."
+                                           variant="outlined" fullWidth
+                                required/>
                             </Grid>
                             <Grid xs={12} item>
-                                <TextField error={formValues.msg.length === 0 ? true : false} label="Jūsų žinutė:" multiline rows={4}
+                                <TextField error={formValues.msg.length === 0 ? true : false}
+                                           label="Jūsų žinutė:" multiline rows={4}
                                            placeholder="pradėkite rašyti čia..."
                                            variant="outlined" fullWidth required value={formValues.msg}
                                            onChange={(e) => {
                                                setFormValues({
                                                    msg:e.target.value
                                                })
-                                           }}/>
-                                {!formValues.msg ? <FormHelperText error={formValues.msg.length === 0 ? true : false} id="component-error-text">Nepalikite tuscio</FormHelperText> : undefined }
+                                           }}
+                                />
                             </Grid>
                             <Grid xs={12} item>
                                 <Button type="submit" variant="contained" color="primary" fullWidth>Išsiųsti</Button>

@@ -74,8 +74,11 @@ const Navbar = () => {
                     <Link to="/articles/saved" onClick={() => setNavbarOpen(false)}>
                         <p>Išsaugoti</p>
                     </Link>
-                    <Link to="/sign-up" onClick={() => setNavbarOpen(false)}>
-                        <p>Užsiregistruoti</p>
+                    <Link to="/login" onClick={() => setNavbarOpen(false)}>
+                        <p>Prisijungti/Registruotis</p>
+                    </Link>
+                    <Link to="/logout" onClick={() => setNavbarOpen(false)}>
+                        <p>Atsijungti</p>
                     </Link>
                 </MobileMenuNavbar>
             }
@@ -89,8 +92,11 @@ const Navbar = () => {
                 <Link to="/articles/saved">
                     <p>Išsaugoti</p>
                 </Link>
-                <Link to="/sign-up">
-                    <p>Užsiregistruoti</p>
+                <Link to="/login" onClick={() => setNavbarOpen(false)}>
+                    <p>Prisijungti/Registruotis</p>
+                </Link>
+                <Link to="/logout" onClick={() => setNavbarOpen(false)}>
+                    <p>Atsijungti</p>
                 </Link>
             </DesktopMenuNavbar>
         </Nav>

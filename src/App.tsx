@@ -10,8 +10,7 @@ import HomePage from "./pages/Homepage";
 import SavedArticles from "./pages/SavedArticles";
 import Contacts from "./pages/Contacts";
 import SignUp from  "./pages/SignUp";
-import {Playground} from "./pages/Playground";
-
+import Logout from "./pages/Logout";
 
 const App = () => {
     return (
@@ -21,9 +20,9 @@ const App = () => {
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/login" element={<SignUp/>} />
             <Route path ="/articles/saved" element={<SavedArticles/>} />
-            <Route path ="/playground" element={<Playground/>} />
+            <Route path ="/logout" element={<Logout />} />
         </Routes>
     </BrowserRouter>
   );

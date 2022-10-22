@@ -20,7 +20,15 @@ const Homepage = () => {
     useEffect(() => {
         fetch("http://localhost:3005/articles/", {
             mode: "no-cors",
-        }).then(r => r.json())
+        }).then(r => {
+            console.log('Fetch executed');
+            if (r.redirected) {
+                window.location.replace(r.url);
+                // return Promise.resolve(r);
+            }
+            return r;
+        })
+            .then(r => r.json())
             .then(r => setCards(r))
     }, []);
     return <div>
@@ -29,6 +37,7 @@ const Homepage = () => {
             <RefreshButton onClick={() => {
                 setRefreshDisable(true)
                 fetch("http://localhost:3005/articles/", {
+                    redirect: 'follow',
                     mode: "no-cors",
                 }).then(r => r.json())
                     .then(r => {
