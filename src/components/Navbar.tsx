@@ -38,19 +38,19 @@ const DesktopMenuNavbar = styled.nav`
 const MobileMenuNavbar = styled.nav`
   display: flex;
   border: 1px solid black;
-  background: black;
   opacity: 90%;
   flex-direction: column;
   padding: 4rem 3rem;
   font-size: 1.5rem;
   gap: 2rem;
   font-weight: bold;
+  background: black;
+  color: white;
 
   a {
     color: white;
     text-decoration: none;
     text-align: center;
-
   }
 
   @media (min-width: 600px) {
@@ -58,10 +58,15 @@ const MobileMenuNavbar = styled.nav`
   }
 `;
 
+const NavbarContainer = styled.nav`
+    background-color: black;
+  margin-bottom: 10px;
+`;
+
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
     return (
-        <Nav>
+        <NavbarContainer>
             <HamburgerBtn className="fa fa-bars" onClick={() => setNavbarOpen(!navbarOpen)}/>
             {
                 navbarOpen && <MobileMenuNavbar>
@@ -78,7 +83,7 @@ const Navbar = () => {
                         <p>Prisijungti/Registruotis</p>
                     </Link>
                     <Link to="/logout" onClick={() => setNavbarOpen(false)}>
-                        <p>Atsijungti</p>
+                        <p><i className="fa fa-sign-out" aria-hidden="true"></i></p>
                     </Link>
                 </MobileMenuNavbar>
             }
@@ -99,7 +104,7 @@ const Navbar = () => {
                     <p><i className="fa fa-sign-out" aria-hidden="true"></i></p>
                 </Link>
             </DesktopMenuNavbar>
-        </Nav>
+        </NavbarContainer>
     )
 };
 

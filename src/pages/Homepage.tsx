@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 import ArticleModal from "../components/ArticleModal";
 import {RefreshButton} from "../components/Buttons";
 import HomeCard from "../components/Card";
+import HomePageContainer from "../components/Homepage";
+import {Input} from "@mui/material";
 
 export interface ArticleSummary {
     id: number;
@@ -33,7 +35,7 @@ const Homepage = () => {
     }, []);
     return <div>
         <ArticleModal key={articleIdToShow} visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} articleIdToShow={articleIdToShow} />
-        <div>
+        <HomePageContainer>
             <RefreshButton onClick={() => {
                 setRefreshDisable(true)
                 fetch("http://localhost:3005/articles/", {
@@ -47,10 +49,15 @@ const Homepage = () => {
             }} disabled={refreshDisable}>
                 Atnaujinti <i className="fa fa-refresh" aria-hidden="true"></i>
             </RefreshButton>
-            <input type="text" placeholder="Įveskite ieškomą frazę..." value={search} onChange={(e) => {
+            <Input style={{
+                margin: "0 10vw",
+                letterSpacing: '2px',
+                width: "230px",
+            }
+            } type="text" placeholder="Įveskite ieškomą frazę..." value={search} onChange={(e) => {
                 setSearch(e.target.value)
             }}/>
-        </div>
+        </HomePageContainer>
         {cards
             .filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search))
             .map(r => <HomeCard data={r} onclick={() => {

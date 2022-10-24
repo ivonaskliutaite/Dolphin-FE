@@ -64,7 +64,7 @@ const SignUp = () => {
                     setRegistration(false)
                 }}>prisijunkite</a>.
                 </div>) : (<div>
-                    Esate neužsiregistravę? Tuomet <a href='#' onClick={() => {
+                    Esate užsiregistravę? Tuomet <a href='#' onClick={() => {
                     setRegistration(true)
                 }}>užsiregistruokite</a>.
                 </div>)
