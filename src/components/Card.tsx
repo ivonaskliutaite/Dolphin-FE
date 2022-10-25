@@ -31,7 +31,7 @@ const CardCategory = styled.div`
   font-size: 14px;
   border-radius: 50px;
   transition-duration: .3s;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   white-space: normal;
   font-weight: bold;

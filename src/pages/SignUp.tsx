@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Field, Form, Formik} from "formik";
-import {object, string} from "yup";
+import {LoginButton} from "../components/Buttons";
+import { string} from "yup";
 import * as Yup from "yup";
 import {Box, TextField, Typography} from "@mui/material";
 
@@ -10,7 +11,10 @@ const Schema = Yup.object().shape({
             .min(2, "Name too short"),
         password: string()
             .required("Please enter password")
-            .min(7, "Password should be minimum 7 characters long")
+            .matches(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                "Minimum 8 ženklai, minimum viena raidė didžioji, minimum viena raidė mažoji, vienas skaičius, vienas specialus ženklas"
+            ),
     });
 
 const SignUp = () => {
@@ -62,9 +66,6 @@ const SignUp = () => {
 
     return (
         <div className="MaterialForm">
-            <Typography variant="h5">
-                Prisijungimo ir registracijos puslapis
-            </Typography>
             <Formik
                 validationSchema={Schema}
                 initialValues={initialValues}
@@ -76,15 +77,27 @@ const SignUp = () => {
                     console.log('errors', errors)
                     return (
                         <Form style={{
+                            margin: "50px",
                             display: "flex",
-                            flexDirection: "column"
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems:"center",
+                            gap: "1vh",
                         }}>
+                            <Typography variant="h4">
+                                Prisijungimo/ registracijos puslapis
+                            </Typography>
+                            <Box height={14} />
                             <Field
+                                style={{
+                                    alignItems: "center"
+                                }}
                                 type="text"
                                 title="username"
                                 label="username"
                                 onBlur={handleBlur}
                                 error={!!errors.username && !!touched.username}
+                                helperText={!!touched.username && errors.username}
                                 as={TextField}
                                 variant="outlined"
                                 color="primary"
@@ -96,16 +109,15 @@ const SignUp = () => {
                                 title="password"
                                 onBlur={handleBlur}
                                 label="password"
-                                fullWidth
                                 error={!!errors.password && !!touched.password}
-                                helperText={Boolean(touched.password) && errors.password}
+                                helperText={!!touched.password && errors.password}
                                 as={TextField}
                                 variant="outlined"
                                 color="primary"
                                 name="password"
                             />
                             <Box height={14} />
-                            <button disabled={!!errors.username || !!errors.password}
+                            <LoginButton disabled={!!errors.username || !!errors.password}
                                 onClick={() => {
                                 if (values.username && values.password) {
                                     registration ? register(values.username, values.password) : login(values.username, values.password)
@@ -114,7 +126,7 @@ const SignUp = () => {
                                 {
                                     registration ? 'Užsiregistruokite' : 'Prisijungti'
                                 }
-                            </button>
+                            </LoginButton>
                             {
                                 registration ? (<div>
                                     Gal jungiatės ne pirmą kartą? Tuomet <a href='#' onClick={() => {
