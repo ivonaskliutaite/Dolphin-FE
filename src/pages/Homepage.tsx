@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import ArticleModal from "../components/ArticleModal";
 import {RefreshButton} from "../components/Buttons";
 import HomeCard from "../components/Card";
-import HomePageContainer from "../components/Homepage";
 import {Input} from "@mui/material";
 
 export interface ArticleSummary {
@@ -35,7 +34,7 @@ const Homepage = () => {
     }, []);
     return <div>
         <ArticleModal key={articleIdToShow} visible={!!articleIdToShow} onClose={() => setArticleIdToShow(null)} articleIdToShow={articleIdToShow} />
-        <HomePageContainer>
+        <div>
             <RefreshButton onClick={() => {
                 setRefreshDisable(true)
                 fetch("http://localhost:3005/articles/", {
@@ -57,7 +56,7 @@ const Homepage = () => {
             } type="text" placeholder="Įveskite ieškomą frazę..." value={search} onChange={(e) => {
                 setSearch(e.target.value)
             }}/>
-        </HomePageContainer>
+        </div>
         {cards
             .filter(r => r.title.toLowerCase().includes(search.toLowerCase()) || r.category?.includes(search))
             .map(r => <HomeCard data={r} onclick={() => {
