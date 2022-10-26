@@ -3,17 +3,18 @@
 ## Disable google chrome security by writing this command in terminal:
 open -na Google\ Chrome --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security --disable-site-isolation-trials\n
 
-## Install dependencies:
+## Install and run back-end:
+```shell
+git clone https://github.com/ivonaskliutaite/Dolphin-BE.git
+cd Dolphin-BE
 npm i
+npm run start
+```
 
-## Clone backend repository:
-https://github.com/ivonaskliutaite/Dolphin-BE.git
-
-## Install dependencies in cloned back-end file:
+## Install and run front-end:
+```shell
+git clone https://github.com/ivonaskliutaite/Dolphin-FE.git
+cd Dolphin-FE
 npm i
-
-## Start back-end project:
 npm run start
-
-## Start front-end project
-npm run start
+```
