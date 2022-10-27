@@ -31,11 +31,18 @@ const ArticleModal = (props: ArticleModalProps) => {
                 isOpen={props.visible}
                 contentLabel="Example Modal"
             >
-                <button onClick={() => {
+                <button style={{
+                    cursor: "pointer",
+                    borderRadius: "5px"
+                }} onClick={() => {
                     props.onClose()
                 }}>Close
                 </button>
-                <button onClick={() => {
+                <button style={{
+                    cursor: "pointer",
+                    borderRadius: "5px"
+                }}
+                    onClick={() => {
                     const requestOptions = {
                         method: 'PUT',
                         headers: {'Content-Type': 'application/json'},
