@@ -24,7 +24,6 @@ export const LoginButton = styled.button`
 `;
 
 export const RefreshButton = styled.button`
-
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -51,8 +50,12 @@ export const RefreshButton = styled.button`
 
   @media(max-width: 600px) {
     font-size: 2vh;
-    margin: 10px auto 20px 60px;
+    margin: 10px auto 20px 40px;
     width: 240px;
+
+    i{
+      display: none;
+    }
   }
 `;
 
