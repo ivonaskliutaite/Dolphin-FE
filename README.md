@@ -1,3 +1,5 @@
+# Delfi news reader project (without ads)
+
 # How to start project:
 
 ## Disable google chrome security by writing this command in terminal:
